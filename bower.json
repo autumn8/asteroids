@@ -1,0 +1,25 @@
+{
+  "name": "Asteroids",
+  "version": "0.0.0",
+  "authors": [
+    "Brad Roodt <brad.roodt@gmail.com>"
+  ],
+  "keywords": [
+    "pixi"
+  ],
+  "license": "MIT",
+  "homepage": "www.autumn8.co.za",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "es6-module-loader": "~0.10.0",
+    "pixi": "~2.2.3"
+  }
+}
