@@ -10,26 +10,6 @@ export class Flame extends PIXI.MovieClip {
     this.anchor.y = 0.5;
     this.animationSpeed = 0.5;
     this.animating = false;
-
-    /*function onKeyDown(e){
-      switch(e.keyCode) {
-        case 38:
-          window.removeEventListener('keydown', onKeyDown);
-          window.addEventListener('keyup', onKeyUp);
-          flame.play();
-          break;
-      }
-    }
-
-    function onKeyUp(e) {
-      switch(e.keyCode) {
-        case 38:
-          window.removeEventListener('keyup', onKeyUp);
-          window.addEventListener('keydown', onKeyDown);
-          flame.gotoAndStop(0);
-          break;
-      }
-    }*/
   }
 
   update() {
