@@ -1,10 +1,12 @@
 import {WrappingSprite} from './WrappingSprite';
 import {EventBus} from './EventBus';
 import {game} from './game';
+import {bulletAudio} from './Audio';
 
 const ACCELERATION = 15;
 const STAGE_WIDTH = game.stageWidth;
 const STAGE_HEIGHT = game.stageHeight;
+const sound = new Audio('audio/fire.wav');
 
 let canvas, context;
 
@@ -16,6 +18,8 @@ export class Bullet extends WrappingSprite{
     this.anchor.set(-2, 0.5);
     this.lifeCount = 0;
     this.rotation = game.player.rotation;
+    let sound = bulletAudio.cloneNode();
+    sound.play();
   }
 
   update(delta) {

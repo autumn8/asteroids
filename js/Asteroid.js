@@ -24,23 +24,26 @@ export class Asteroid extends WrappingSprite {
   }
 
   update(delta) {
+    //move and wrap object on screen
+    this.move(delta);
+    this.wrap();
+
+    // check collisions with player
     if (this.hit(player)) {
       EventBus.publish('destroy.player');
       EventBus.publish('destroy.asteroid', this);
       return;
     }
 
-    for(let bullet of bullets) {
-      if (this.hit(bullet)) {
-        EventBus.publish('destroy.asteroid', this);
-        EventBus.publish('destroy.bullet', bullet);
-        return;
-      }
+    // check collisions with asteroid
+    for(let bullet of bullets) if (this.hit(bullet)) {
+      EventBus.publish('destroy.asteroid', this);
+      EventBus.publish('destroy.bullet', bullet);
+      return;
     }
-    super.update(delta);
   }
 
-  /** Basic bounding box collision detection */
+  // basic bounding box collision detection
 
   hit(object) {
     return (this.position.x - (this.width * .5) < object.position.x + (object.width * .5) &&
