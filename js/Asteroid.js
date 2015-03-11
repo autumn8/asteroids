@@ -1,10 +1,11 @@
-import {WrappingSprite} from './WrappingSprite';
-import {EventBus} from './EventBus';
-import {game} from './game';
+import WrappingSprite from './WrappingSprite';
+import EventBus from './EventBus';
+import game from './game';
+import {explosionAudio} from './Audio';
 
 let player, bullets;
 
-export class Asteroid extends WrappingSprite {
+class Asteroid extends WrappingSprite {
   constructor(size) {
     bullets = game.bullets;
     player = game.player;
@@ -30,6 +31,7 @@ export class Asteroid extends WrappingSprite {
 
     // check collisions with player
     if (this.hit(player)) {
+      this.playExplosionSound();
       EventBus.publish('destroy.player');
       EventBus.publish('destroy.asteroid', this);
       return;
@@ -37,10 +39,16 @@ export class Asteroid extends WrappingSprite {
 
     // check collisions with asteroid
     for(let bullet of bullets) if (this.hit(bullet)) {
+      this.playExplosionSound();
       EventBus.publish('destroy.asteroid', this);
       EventBus.publish('destroy.bullet', bullet);
       return;
     }
+  }
+
+  playExplosionSound() {
+    let sound = explosionAudio.cloneNode();
+    sound.play();
   }
 
   // basic bounding box collision detection
@@ -52,3 +60,5 @@ export class Asteroid extends WrappingSprite {
             this.position.y  + (this.height * .5) > object.position.y - (object.height * .5));
   }
 }
+
+export default Asteroid;

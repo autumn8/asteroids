@@ -1,7 +1,7 @@
-import {game} from './game';
+import game from './game';
 
 //Base class for wrapping sprites- sprites that automaticall wrap around to other side of screen when sprite moves off stage.
-export class WrappingSprite extends PIXI.Sprite {
+class WrappingSprite extends PIXI.Sprite {
   constructor(texture) {
     super(texture);
     this.stageWidth = game.stageWidth;
@@ -25,3 +25,6 @@ export class WrappingSprite extends PIXI.Sprite {
     if (this.y > this.stageHeight + this.height / 2) this.y = -this.height / 2;
   }
 }
+
+
+export default WrappingSprite;

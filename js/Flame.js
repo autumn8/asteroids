@@ -1,6 +1,6 @@
-import {KeyListener} from './keyListener';
+import KeyListener from './keyListener';
 
-export class Flame extends PIXI.MovieClip {
+class Flame extends PIXI.MovieClip {
   constructor() {
     var textures = createTextures('flame', 0, 1);
     super(textures);
@@ -43,3 +43,5 @@ function createTextures(image, startFrame, endFrame) {
   }
   return textures;
 }
+
+export default Flame;

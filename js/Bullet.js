@@ -1,6 +1,6 @@
-import {WrappingSprite} from './WrappingSprite';
-import {EventBus} from './EventBus';
-import {game} from './game';
+import WrappingSprite from './WrappingSprite';
+import EventBus from './EventBus';
+import game from './game';
 import {bulletAudio} from './Audio';
 
 const ACCELERATION = 15;
@@ -10,7 +10,7 @@ const sound = new Audio('audio/fire.wav');
 
 let canvas, context;
 
-export class Bullet extends WrappingSprite{
+class Bullet extends WrappingSprite{
   constructor() {
     var texture = PIXI.Texture.fromCanvas(createCanvas());
     this.speed = {x:0, y:0};
@@ -23,9 +23,10 @@ export class Bullet extends WrappingSprite{
   }
 
   update(delta) {
-    if (this.lifeCount > 40) return this.destroy();
+    if (this.lifeCount > 80) return this.destroy();
     this.lifeCount++;
-    super.update(delta);
+    this.move(delta);
+    this.wrap();
   }
 
   destroy() {
@@ -48,3 +49,5 @@ function createCanvas() {
   context.fillRect(0,0,6,2);
   return canvas;
 }
+
+export default Bullet;

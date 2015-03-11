@@ -1,12 +1,12 @@
-import {Asteroid} from './Asteroid';
-import {EventBus} from './EventBus';
-import {game} from './game';
+import Asteroid from './Asteroid';
+import EventBus from './EventBus';
+import game from './game';
 
 let numAsteroids, asteroids, stage, bullets, player, destroy;
 
 //All asteroids are added to this display object container.It behaves like an intelligent array so we can easily check for collisions and remove the asteroid when necessary
 
-export class Asteroids extends PIXI.DisplayObjectContainer{
+class Asteroids extends PIXI.DisplayObjectContainer{
   constructor() {
     super();
     EventBus.subscribe('destroy.asteroid', (asteroid) => this.onDestroy(asteroid));
@@ -32,3 +32,5 @@ export class Asteroids extends PIXI.DisplayObjectContainer{
     }
   }
 }
+
+export default Asteroids;

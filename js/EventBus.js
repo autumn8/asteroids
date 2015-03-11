@@ -1,6 +1,6 @@
 let topics = {};
 
-export var EventBus = {
+let EventBus = {
 
   subscribe(topic, listener) {
     if(!topics[topic]) topics[topic] = [];
@@ -14,3 +14,5 @@ export var EventBus = {
     }
   }
 };
+
+export default EventBus;

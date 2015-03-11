@@ -1,16 +1,17 @@
-import {Player} from './Player';
-import {Asteroid} from './Asteroid';
-import {game} from './game';
-import {Flame} from './Flame';
-import {Bullets} from './Bullets';
-import {Asteroids} from './Asteroids';
-import {Scoreboard} from './Scoreboard';
+import Player from './Player';
+import game from './game';
+import Bullets from './Bullets';
+import Asteroids from './Asteroids';
+import Scoreboard from './Scoreboard';
+import Soundtrack from './Soundtrack';
 
-let stage, stageWidth, stageHeight, renderer, prevTime, currentTime, delta, player, asteroids, loader, bullets, scoreboard;
+let stage, stageWidth, stageHeight, renderer, prevTime, currentTime, delta, player, asteroids, loader, bullets, scoreboard, soundtrack;
 
 loadAssets();
 
 function onAssetsLoaded() {
+  game.stageWidth = window.innerWidth;
+  game.stageHeight = window.innerHeight;
   init();
   createStage();
   createPlayer();
@@ -25,6 +26,10 @@ function init() {
   currentTime = Date.now();
   prevTime = currentTime;
   delta = 0;
+  soundtrack = new Soundtrack();
+  soundtrack.init();
+  //soundtrack.play();
+
 }
 
 function createBullets() {

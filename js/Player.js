@@ -1,16 +1,15 @@
-import {WrappingSprite} from './WrappingSprite';
-import {Flame} from './Flame';
-import {KeyListener} from './keyListener';
-import {Bullet} from './Bullet';
-import {game} from './game';
+import WrappingSprite from './WrappingSprite';
+import Flame from './Flame';
+import KeyListener from './keyListener';
+import game from './game';
 
-const ACCELERATION = .5;
+const ACCELERATION = .35;
 const FRICTION = 0.99;
-const ROT_INC = .15;
+const ROT_INC = .12;
 
 var flame;
 
-export class Player extends WrappingSprite{
+class Player extends WrappingSprite{
 
   constructor() {
     flame = new Flame();
@@ -50,3 +49,5 @@ export class Player extends WrappingSprite{
     super.move(delta);
   }
 }
+
+export default Player;

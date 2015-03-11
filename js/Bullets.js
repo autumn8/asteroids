@@ -1,10 +1,10 @@
-import {Bullet} from './Bullet';
-import {EventBus} from './EventBus';
-import {game} from './game';
+import Bullet from './Bullet';
+import EventBus from './EventBus';
+import game from './game';
 
 let stage, bullets;
 
-export class Bullets extends PIXI.DisplayObjectContainer{
+class Bullets extends PIXI.DisplayObjectContainer{
   constructor() {
     super();
     game.bullets = this.children;
@@ -33,3 +33,5 @@ export class Bullets extends PIXI.DisplayObjectContainer{
     bullet.position.set(game.player.x, game.player.y);
   }
 }
+
+export default Bullets;

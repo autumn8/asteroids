@@ -1,18 +1,25 @@
 let player, stageWidth, stageHeight, asteroids, bullets;
 
-stageWidth = 1200;
-stageHeight = 800;
+stageWidth;
+stageHeight;
 asteroids = [];
 bullets = [];
-
-export var game = {
+let game = {
 
   get stageWidth() {
-    return stageWidth
+    return stageWidth;
+  },
+
+  set stageWidth(value) {
+    stageWidth = value;
   },
 
   get stageHeight() {
-    return stageHeight
+    return stageHeight;
+  },
+
+  set stageHeight(value) {
+    stageHeight = value;
   },
 
   get asteroids() {
@@ -39,3 +46,5 @@ export var game = {
     return player
   }
 };
+
+export default game;

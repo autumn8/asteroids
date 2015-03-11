@@ -1,7 +1,7 @@
-import {EventBus} from './EventBus';
+import EventBus from './EventBus';
 let score;
 
-export class Scoreboard extends PIXI.Text{
+class Scoreboard extends PIXI.Text{
   constructor() {
     score = 0;
     super(score, {font: '38px Hyperspace', fill : 'white'});
@@ -10,7 +10,9 @@ export class Scoreboard extends PIXI.Text{
   }
 
   increment(asteroid) {
-    score += 10;
+    score += 1000;
     super.setText(score);
   }
 }
+
+export default Scoreboard;
