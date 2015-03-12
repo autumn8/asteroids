@@ -2,7 +2,6 @@ import WrappingSprite from './WrappingSprite';
 import EventBus from './EventBus';
 import game from './game';
 import {explosionAudio} from './Audio';
-
 let player, bullets;
 
 class Asteroid extends WrappingSprite {
@@ -26,8 +25,7 @@ class Asteroid extends WrappingSprite {
 
   update(delta) {
     //move and wrap object on screen
-    this.move(delta);
-    this.wrap();
+   super.update(delta);
 
     // check collisions with player
     if (this.hit(player)) {

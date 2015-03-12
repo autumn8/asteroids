@@ -7,13 +7,14 @@ const ACCELERATION = 15;
 const STAGE_WIDTH = game.stageWidth;
 const STAGE_HEIGHT = game.stageHeight;
 const sound = new Audio('audio/fire.wav');
-
 let canvas, context;
 
 class Bullet extends WrappingSprite{
   constructor() {
     var texture = PIXI.Texture.fromCanvas(createCanvas());
     this.speed = {x:0, y:0};
+    this.stageWidth = game.stageWidth;
+    this.stageHeight = game.stageHeight;
     super(texture);
     this.anchor.set(-2, 0.5);
     this.lifeCount = 0;
@@ -36,7 +37,8 @@ class Bullet extends WrappingSprite{
   move(delta) {
     this.speed.x = Math.cos(this.rotation) * ACCELERATION; //calculates x speed based on rotation of ship. rotation must be in radians so use deg2rad function to convert.
     this.speed.y = Math.sin(this.rotation) * ACCELERATION; //calculates y speed based on rotation of ship
-    super.move(delta);
+    this.x += this.speed.x * delta;
+    this.y += this.speed.y * delta;
   }
 }
 

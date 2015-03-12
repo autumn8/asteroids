@@ -7,11 +7,9 @@ const ACCELERATION = .35;
 const FRICTION = 0.99;
 const ROT_INC = .12;
 let {cos, sin} = Math;
-
-var flame;
+let flame;
 
 class Player extends WrappingSprite{
-
   constructor() {
     flame = new Flame();
     var texture = PIXI.Texture.fromImage('images/starship.png');
@@ -19,6 +17,11 @@ class Player extends WrappingSprite{
     this.addChild(flame);
     this.anchor.set(0.5, 0.5);
     this.pivot.set(0.25, 0.5);
+    this.init();
+
+  }
+
+  init() {
     this.position.set(this.stageWidth/2, this.stageHeight/2);
     this.rotation = -3.14/2;
     this.speed = {

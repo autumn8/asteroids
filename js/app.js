@@ -1,11 +1,11 @@
-import Player from './Player';
+import PlayerController from './PlayerController';
 import game from './game';
 import Bullets from './Bullets';
 import Asteroids from './Asteroids';
 import Scoreboard from './Scoreboard';
 import Soundtrack from './Soundtrack';
 
-let stage, stageWidth, stageHeight, renderer, prevTime, currentTime, delta, player, asteroids, loader, bullets, scoreboard, soundtrack;
+let stage, stageWidth, stageHeight, renderer, prevTime, currentTime, delta, playerController, asteroids, loader, bullets, scoreboard, soundtrack, numLives;
 
 loadAssets();
 
@@ -14,7 +14,7 @@ function onAssetsLoaded() {
   game.stageHeight = window.innerHeight;
   init();
   createStage();
-  createPlayer();
+  createPlayerController();
   createBullets();
   createAsteroids();
   createScoreboard();
@@ -27,9 +27,6 @@ function init() {
   prevTime = currentTime;
   delta = 0;
   soundtrack = new Soundtrack();
-  soundtrack.init();
-  //soundtrack.play();
-
 }
 
 function createBullets() {
@@ -54,10 +51,8 @@ function loadAssets() {
   loader.load();
 }
 
-function createPlayer() {
-  player = new Player();
-  stage.addChild(player);
-  game.player = player;
+function createPlayerController() {
+  playerController = new PlayerController();
 }
 
 function createStage() {
@@ -72,20 +67,10 @@ function createStage() {
 function update() {
   currentTime = Date.now();
   delta = (currentTime - prevTime) / 32;
-  player.update(delta);
+  playerController.update(delta);
   asteroids.update(delta);
   bullets.update(delta);
   renderer.render(stage);
   requestAnimationFrame(update);
   prevTime = currentTime;
 }
-
-
-
-
-
-
-
-
-
-
