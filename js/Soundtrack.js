@@ -4,6 +4,7 @@ let interval, counter, timeout, beat1, beat2, soundtrack;
 class Soundtrack {
   constructor() {
     soundtrack = this;
+    soundtrack.init();
   }
 
   play() {
