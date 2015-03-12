@@ -54,10 +54,10 @@ class Asteroid extends WrappingSprite {
   // basic bounding box collision detection
 
   hit(object) {
-    return (this.position.x - (this.width * .5) < object.position.x + (object.width * .5) &&
-            this.position.x + this.width * .5 > object.position.x  - (object.width  * .5) &&
-            this.position.y - (this.height * .5) < object.position.y + (object.height * .5) &&
-            this.position.y  + (this.height * .5) > object.position.y - (object.height * .5));
+    return (this.position.x - (this.width * .4) < object.position.x + (object.width * .4) &&
+            this.position.x + this.width * .4 > object.position.x  - (object.width  * .4) &&
+            this.position.y - (this.height * .4) < object.position.y + (object.height * .4) &&
+            this.position.y  + (this.height * .4) > object.position.y - (object.height * .4));
   }
 }
 

@@ -14,7 +14,7 @@ class Soundtrack {
     counter % 2 === 0 ?  beat1Audio.play() : beat2Audio.play();
     interval -= 1;
     counter++;
-    timeout = setTimeout(()=> {this.playBeat}, interval);
+    timeout = setTimeout(soundtrack.playBeat, interval);
   }
 
   stop() {

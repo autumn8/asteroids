@@ -6,6 +6,7 @@ import game from './game';
 const ACCELERATION = .35;
 const FRICTION = 0.99;
 const ROT_INC = .12;
+let {cos, sin} = Math;
 
 var flame;
 
@@ -33,8 +34,8 @@ class Player extends WrappingSprite{
 
   move(delta) {
     if (KeyListener.UP) {
-      this.speed.x += Math.cos(this.rotation) * ACCELERATION; //calculates x speed based on rotation of ship. rotation must be in radians so use deg2rad function to convert.
-      this.speed.y += Math.sin(this.rotation) * ACCELERATION; //calculates y speed based on rotation of ship
+      this.speed.x += cos(this.rotation) * ACCELERATION; //calculates x speed based on rotation of ship. rotation must be in radians so use deg2rad function to convert.
+      this.speed.y += sin(this.rotation) * ACCELERATION; //calculates y speed based on rotation of ship
     }
     else {
       this.speed.x *= FRICTION;

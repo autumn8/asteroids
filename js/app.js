@@ -55,7 +55,7 @@ function loadAssets() {
 }
 
 function createPlayer() {
-  player = new Player(stage);
+  player = new Player();
   stage.addChild(player);
   game.player = player;
 }
